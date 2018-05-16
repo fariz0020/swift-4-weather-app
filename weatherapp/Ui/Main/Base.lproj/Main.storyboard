@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="weatherapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qWY-oe-Xhg">
+                                <rect key="frame" x="20" y="199" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wor-E8-21p">
+                                <rect key="frame" x="20" y="237" width="335" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ujj-Cd-uSn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input your city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7M-3g-9Ft">
+                                <rect key="frame" x="20" y="170" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qWY-oe-Xhg" secondAttribute="trailing" constant="20" id="25s-jK-mUL"/>
+                            <constraint firstItem="D7M-3g-9Ft" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="35Y-fr-rK4"/>
+                            <constraint firstItem="D7M-3g-9Ft" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="DXp-oO-G8e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="D7M-3g-9Ft" secondAttribute="trailing" constant="20" id="JFD-hX-MEP"/>
+                            <constraint firstItem="qWY-oe-Xhg" firstAttribute="top" secondItem="D7M-3g-9Ft" secondAttribute="bottom" constant="8" id="QFm-c8-xXt"/>
+                            <constraint firstItem="Wor-E8-21p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QR9-3O-YRr"/>
+                            <constraint firstItem="qWY-oe-Xhg" firstAttribute="top" secondItem="D7M-3g-9Ft" secondAttribute="bottom" constant="8" id="RGQ-rV-nmz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wor-E8-21p" secondAttribute="trailing" constant="20" id="WUX-0g-Yrg"/>
+                            <constraint firstItem="Wor-E8-21p" firstAttribute="top" secondItem="qWY-oe-Xhg" secondAttribute="bottom" constant="8" id="sTu-jo-2d2"/>
+                            <constraint firstItem="Wor-E8-21p" firstAttribute="top" secondItem="qWY-oe-Xhg" secondAttribute="bottom" constant="8" id="uLK-d9-dMJ"/>
+                            <constraint firstItem="qWY-oe-Xhg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ydS-39-i7s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnSearch" destination="Wor-E8-21p" id="UrM-GE-e9m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
