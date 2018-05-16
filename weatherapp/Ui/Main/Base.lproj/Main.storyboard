@@ -26,7 +26,10 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wor-E8-21p">
                                 <rect key="frame" x="20" y="237" width="335" height="30"/>
-                                <state key="normal" title="Search"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ujj-Cd-uSn"/>
                                 </connections>
@@ -56,6 +59,7 @@
                     </view>
                     <connections>
                         <outlet property="btnSearch" destination="Wor-E8-21p" id="UrM-GE-e9m"/>
+                        <outlet property="txtCity" destination="qWY-oe-Xhg" id="CY2-SB-MZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

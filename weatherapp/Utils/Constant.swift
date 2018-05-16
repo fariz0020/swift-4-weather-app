@@ -37,9 +37,12 @@ enum StatusCode: Int {
 }
 
 struct Strings {
+    static let APP_NAME = "WeatherApp"
     static let STR_OK = "OK"
-    static let STR_API_ERROR = "Gagal melakukan koneksi ke server"
-    static let connectionError = "Koneksi gagal. Silakan coba lagi"
+    static let STR_API_ERROR = "Failed connect to server, please check internet"
+    static let connectionError = "Connection failed, please check internet"
+    static let dialogError = "Oooppss"
+    static let formError = "Please fill the form"
 }
 
 struct SegueID {

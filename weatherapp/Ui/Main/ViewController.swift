@@ -12,6 +12,7 @@ import Alamofire
 class ViewController: UIViewController {
 
     @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var txtCity: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,17 @@ class ViewController: UIViewController {
     func openWeatherPage(city: String) {
         let weatherUI = UIStoryboard(name: StoryboardName.weather, bundle: nil)
         let weatherVC = weatherUI.instantiateViewController(withIdentifier: StoryboardID.weatherStoryboard) as! WeatherViewController
+        weatherVC.city = city
         self.present(weatherVC, animated: true, completion: nil)
     }
-
+    
     @IBAction func btnSearchClick(_ sender: Any) {
-        openWeatherPage(city: "OK")
+        if !(txtCity.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
+            openWeatherPage(city: txtCity.text!)
+        }
+        let alert = UIAlertController(title: Strings.dialogError, message: Strings.formError, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Strings.STR_OK, style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
