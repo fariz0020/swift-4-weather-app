@@ -9,6 +9,7 @@
 struct ApiConstant {
     struct EndPoint {
         static let baseUrl = "https://api.openweathermap.org/data/2.5"
+        static let baseIconUrl = "https://openweathermap.org/img/w/"
         static let weather = "weather"
     }
     

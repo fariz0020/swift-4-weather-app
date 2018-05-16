@@ -11,9 +11,17 @@ import Alamofire
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var lblWeatherMain: UILabel!
+    @IBOutlet weak var lblWeatherDescription: UILabel!
+    @IBOutlet weak var lblTemperature: UILabel!
+    @IBOutlet weak var lblCityCountry: UILabel!
+    @IBOutlet weak var lblDatetime: UILabel!
+    
+    @IBOutlet weak var imvWeatherIcon: UIImageView!
+    
     let activityIndicator = UIActivityIndicatorView()
     
-    var weatcher = [Weather]()
+    var weatherData = [Weather]()
     
     // Passing Data
     var city: String?
@@ -27,6 +35,7 @@ class WeatherViewController: UIViewController {
         }
         
         setupViews()
+        setupDatetime()
 
         // Do any additional setup after loading the view.
         fetchWeather(city: city!)
@@ -49,6 +58,18 @@ class WeatherViewController: UIViewController {
         
         // setup empty label
 //        emptyLabelView.isHidden = true
+    }
+    
+    func setupDatetime() {
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .long
+        formatter.dateStyle = .long
+        
+        // get the date time String from the date object
+        lblDatetime.text = formatter.string(from: currentDateTime)
     }
     
     func setNavigationBar() {
@@ -81,7 +102,8 @@ class WeatherViewController: UIViewController {
         Api.fetchWeather(city: city, completion: { (result) in
             switch result {
             case .success(let response):
-                print(response)
+                self.setupWeather(response: response)
+                
                 self.showLoading(isShow: false)
             case .failure(let error):
                 print(error)
@@ -89,4 +111,25 @@ class WeatherViewController: UIViewController {
             }
         })
     }
+    
+    func setupWeather(response: WeatherResponse) {
+        print(response)
+        
+        // setup temperature & city header
+        self.lblTemperature.text = String(format: "%.0fº C", (response.main?.temp)! - 273.15)
+        self.lblCityCountry.text = String(format: "%@, %@ %@", city!, IsoCountryCodes.find(key: (response.sys?.country)!).name, IsoCountries.flag(countryCode: (response.sys?.country)!))
+        
+        // setup image icon
+        weatherData = response.weather!
+        if let iconName = weatherData[0].icon {
+            print(iconName)
+            let url = ApiConstant.EndPoint.baseIconUrl + iconName
+            print(url)
+            self.imvWeatherIcon.downloadedFrom(url: URL(string: url)!)
+        }
+        // setup weather condition
+        self.lblWeatherMain.text = response.weather![0].main
+        self.lblWeatherDescription.text = response.weather![0].description
+    }
+    
 }

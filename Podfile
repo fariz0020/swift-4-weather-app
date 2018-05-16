@@ -7,6 +7,7 @@ target 'weatherapp' do
 
   # Pods for weatherapp
   pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireImage', '~> 3.3'
 
   target 'weatherappTests' do
     inherit! :search_paths
