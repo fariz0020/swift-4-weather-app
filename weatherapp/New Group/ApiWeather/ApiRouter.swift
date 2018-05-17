@@ -29,7 +29,9 @@ enum ApiRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .weather(let city):
-            return [ApiConstant.ParameterKey.q: city, ApiConstant.ParameterKey.apiKey: ApiConstant.API_KEY]
+            return [ApiConstant.ParameterKey.q: city,
+                    ApiConstant.ParameterKey.apiKey: ApiConstant.WeatherParameterValue.API_KEY,
+                    ApiConstant.ParameterKey.units: ApiConstant.WeatherParameterValue.units]
         }
     }
     

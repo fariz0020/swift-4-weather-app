@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Alamofire
 @testable import weatherapp
 
 class weatherappTests: XCTestCase {
@@ -24,6 +25,23 @@ class weatherappTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testWeatherApi() {
+        let e = expectation(description: "Alamofire")
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?apiKey=72c165523c0e72840087f75a65b4cb65&q=Jakarta"
+        
+        Alamofire.request(urlString)
+            .response { response in
+                XCTAssertNil(response.error, "Whoops, error \(response.error!.localizedDescription)")
+                
+                XCTAssertNotNil(response, "No response")
+                XCTAssertEqual(response.response?.statusCode ?? 0, 200, "Status code not 200")
+                
+                e.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     func testPerformanceExample() {

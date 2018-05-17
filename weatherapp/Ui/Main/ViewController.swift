@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        view.accessibilityIdentifier = "mainView"
+        btnSearch.accessibilityIdentifier = "searchButton"
+        txtCity.accessibilityIdentifier = "cityText"
         
         btnSearch.layer.cornerRadius = btnSearch.frame.size.height/4
         btnSearch.layer.masksToBounds = true

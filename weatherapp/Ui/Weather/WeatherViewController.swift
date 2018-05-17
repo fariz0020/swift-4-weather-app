@@ -16,12 +16,22 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var lblTemperature: UILabel!
     @IBOutlet weak var lblCityCountry: UILabel!
     @IBOutlet weak var lblDatetime: UILabel!
+    @IBOutlet weak var lblAddHumidity: UILabel!
+    @IBOutlet weak var lblAddPressure: UILabel!
+    @IBOutlet weak var lblAddWind: UILabel!
+    @IBOutlet weak var lblAddSunrise: UILabel!
+    @IBOutlet weak var lblAddSunset: UILabel!
+    @IBOutlet weak var lblAddOtherTemp: UILabel!
+    
+    @IBOutlet weak var btnSwapTemp: UIButton!
     
     @IBOutlet weak var imvWeatherIcon: UIImageView!
     
     let activityIndicator = UIActivityIndicatorView()
     
     var weatherData = [Weather]()
+    
+    var temp: Double = 0
     
     // Passing Data
     var city: String?
@@ -33,6 +43,8 @@ class WeatherViewController: UIViewController {
             dismiss(animated: false, completion: nil)
             return
         }
+        
+        view.accessibilityIdentifier = "weatherView"
         
         setupViews()
         setupDatetime()
@@ -116,20 +128,37 @@ class WeatherViewController: UIViewController {
         print(response)
         
         // setup temperature & city header
-        self.lblTemperature.text = String(format: "%.0fº C", (response.main?.temp)! - 273.15)
+        temp = (response.main?.temp)!
+        self.lblTemperature.text = String(format: "%.0fº C", (response.main?.temp)!)
         self.lblCityCountry.text = String(format: "%@, %@ %@", city!, IsoCountryCodes.find(key: (response.sys?.country)!).name, IsoCountries.flag(countryCode: (response.sys?.country)!))
         
         // setup image icon
         weatherData = response.weather!
         if let iconName = weatherData[0].icon {
-            print(iconName)
-            let url = ApiConstant.EndPoint.baseIconUrl + iconName
-            print(url)
-            self.imvWeatherIcon.downloadedFrom(url: URL(string: url)!)
+            let url = ApiConstant.EndPoint.baseIconUrl + iconName + ".png"
+            imvWeatherIcon.downloadedFrom(url: URL(string: url)!)
         }
         // setup weather condition
         self.lblWeatherMain.text = response.weather![0].main
         self.lblWeatherDescription.text = response.weather![0].description
+        
+        // setup additional info condition
+        self.lblAddHumidity.text = String(format: "%.0f %", (response.main?.humidity)!)
+        self.lblAddPressure.text = String(format: "%.0f hPa", (response.main?.pressure)!)
+        self.lblAddWind.text = String(format: "%.0f m/s", (response.wind?.speed)!)
+        
+        self.lblAddSunrise.text = TimestampUtils.timestampToTime(timestamp: response.sys?.sunrise)
+        self.lblAddSunset.text = TimestampUtils.timestampToTime(timestamp: response.sys?.sunset)
+        self.lblAddOtherTemp.text = String(format: "%.0fº F", (((response.main?.temp)! * 9/5)) + 32)
     }
     
+    @IBAction func swapTemperature(_ sender: UIButton) {
+        if lblTemperature.text?.range(of: "C") != nil {
+            lblTemperature.text = String(format: "%.0fº F", ((temp * 9/5)) + 32)
+            lblAddOtherTemp.text = String(format: "%.0fº C", temp)
+        } else {
+            lblAddOtherTemp.text = String(format: "%.0fº F", ((temp * 9/5)) + 32)
+            lblTemperature.text = String(format: "%.0fº C", temp)
+        }
+    }
 }
