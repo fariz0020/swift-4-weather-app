@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zx8-hF-MYC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2PX-e3-Cih">
                                 <rect key="frame" x="295" y="274.5" width="64" height="64"/>
                                 <constraints>
@@ -244,6 +248,7 @@
                     </view>
                     <connections>
                         <outlet property="btnSwapTemp" destination="ppQ-hR-xBD" id="I56-qh-23F"/>
+                        <outlet property="imvBackground" destination="Zx8-hF-MYC" id="X9K-8C-dow"/>
                         <outlet property="imvWeatherIcon" destination="2PX-e3-Cih" id="Fj3-q2-kJA"/>
                         <outlet property="lblAddHumidity" destination="NMI-ep-npf" id="p3Y-Bu-eLB"/>
                         <outlet property="lblAddOtherTemp" destination="h8o-0J-ybx" id="g1e-sY-y59"/>

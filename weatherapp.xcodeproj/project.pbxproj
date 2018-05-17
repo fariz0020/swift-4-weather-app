@@ -23,6 +23,9 @@
 		8160B88820AD501A00C01EED /* Hits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160B88720AD501A00C01EED /* Hits.swift */; };
 		8160B88B20AD5A6E00C01EED /* Rain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160B88A20AD5A6E00C01EED /* Rain.swift */; };
 		8160B88D20AD662A00C01EED /* TimestampUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160B88C20AD662A00C01EED /* TimestampUtils.swift */; };
+		8160B89020AD6DE600C01EED /* ApiImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160B88F20AD6DE600C01EED /* ApiImageResponse.swift */; };
+		8160B89220AD6E4B00C01EED /* ApiImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160B89120AD6E4B00C01EED /* ApiImageRouter.swift */; };
+		8160B89420AD6F2100C01EED /* ApiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160B89320AD6F2100C01EED /* ApiImage.swift */; };
 		8180181120AC79BB00C4EF3E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8180181020AC79BB00C4EF3E /* Weather.swift */; };
 		8180181620AC7C4500C4EF3E /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8180181520AC7C4500C4EF3E /* Weather.storyboard */; };
 		8180181820AC7C6800C4EF3E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8180181720AC7C6800C4EF3E /* WeatherViewController.swift */; };
@@ -87,6 +90,9 @@
 		8160B88720AD501A00C01EED /* Hits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hits.swift; sourceTree = "<group>"; };
 		8160B88A20AD5A6E00C01EED /* Rain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rain.swift; sourceTree = "<group>"; };
 		8160B88C20AD662A00C01EED /* TimestampUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampUtils.swift; sourceTree = "<group>"; };
+		8160B88F20AD6DE600C01EED /* ApiImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiImageResponse.swift; sourceTree = "<group>"; };
+		8160B89120AD6E4B00C01EED /* ApiImageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiImageRouter.swift; sourceTree = "<group>"; };
+		8160B89320AD6F2100C01EED /* ApiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiImage.swift; sourceTree = "<group>"; };
 		8180181020AC79BB00C4EF3E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		8180181520AC7C4500C4EF3E /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
 		8180181720AC7C6800C4EF3E /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +212,16 @@
 			path = ApiWeather;
 			sourceTree = "<group>";
 		};
+		8160B88E20AD6D6200C01EED /* ApiImage */ = {
+			isa = PBXGroup;
+			children = (
+				8160B88F20AD6DE600C01EED /* ApiImageResponse.swift */,
+				8160B89120AD6E4B00C01EED /* ApiImageRouter.swift */,
+				8160B89320AD6F2100C01EED /* ApiImage.swift */,
+			);
+			path = ApiImage;
+			sourceTree = "<group>";
+		};
 		8180180B20AC768100C4EF3E /* Ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +278,7 @@
 		8180181B20AC803700C4EF3E /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				8160B88E20AD6D6200C01EED /* ApiImage */,
 				8160B88920AD542300C01EED /* ApiWeather */,
 			);
 			name = Api;
@@ -527,11 +544,14 @@
 				8180182520AC84B000C4EF3E /* Clouds.swift in Sources */,
 				8180181120AC79BB00C4EF3E /* Weather.swift in Sources */,
 				8180181820AC7C6800C4EF3E /* WeatherViewController.swift in Sources */,
+				8160B89020AD6DE600C01EED /* ApiImageResponse.swift in Sources */,
 				8180181D20AC804B00C4EF3E /* ApiResponse.swift in Sources */,
 				8180183020AC8CE200C4EF3E /* UIColor+Extension.swift in Sources */,
 				8180182920AC854400C4EF3E /* ApiRouter.swift in Sources */,
 				8160B88820AD501A00C01EED /* Hits.swift in Sources */,
 				8180182E20AC8CBD00C4EF3E /* UIButton+Extension.swift in Sources */,
+				8160B89420AD6F2100C01EED /* ApiImage.swift in Sources */,
+				8160B89220AD6E4B00C01EED /* ApiImageRouter.swift in Sources */,
 				811635A420AC20D200116E20 /* ViewController.swift in Sources */,
 				81464BC520ACE8DE000BBEF5 /* IsoCountryCodes.swift in Sources */,
 				8180181F20AC819200C4EF3E /* Coord.swift in Sources */,

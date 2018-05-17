@@ -33,9 +33,3 @@ struct WeatherResponse: BaseResponse {
     let id: Int?
     let name: String?
 }
-
-//public protocol ImagesResponse: Decodable {
-//    var totalHits: Int? { get }
-//    var total:Int? { get }
-//    var hits: [Hits]? { get }
-//}

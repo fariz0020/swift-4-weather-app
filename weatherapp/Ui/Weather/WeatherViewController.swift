@@ -26,6 +26,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var btnSwapTemp: UIButton!
     
     @IBOutlet weak var imvWeatherIcon: UIImageView!
+    @IBOutlet weak var imvBackground: UIImageView!
     
     let activityIndicator = UIActivityIndicatorView()
     
@@ -67,9 +68,6 @@ class WeatherViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.stopAnimating()
         self.view.addSubview(activityIndicator)
-        
-        // setup empty label
-//        emptyLabelView.isHidden = true
     }
     
     func setupDatetime() {
@@ -115,8 +113,6 @@ class WeatherViewController: UIViewController {
             switch result {
             case .success(let response):
                 self.setupWeather(response: response)
-                
-                self.showLoading(isShow: false)
             case .failure(let error):
                 print(error)
                 self.showLoading(isShow: false)
@@ -126,6 +122,7 @@ class WeatherViewController: UIViewController {
     
     func setupWeather(response: WeatherResponse) {
         print(response)
+        fetchImages(q: String(format: "%@ landmark", IsoCountryCodes.find(key: (response.sys?.country)!).name))
         
         // setup temperature & city header
         temp = (response.main?.temp)!
@@ -150,6 +147,25 @@ class WeatherViewController: UIViewController {
         self.lblAddSunrise.text = TimestampUtils.timestampToTime(timestamp: response.sys?.sunrise)
         self.lblAddSunset.text = TimestampUtils.timestampToTime(timestamp: response.sys?.sunset)
         self.lblAddOtherTemp.text = String(format: "%.0fº F", (((response.main?.temp)! * 9/5)) + 32)
+    }
+    
+    func fetchImages(q: String) {
+        ApiImage.fetchImages(q: q, completion: { (result) in
+            switch result {
+            case .success(let response):
+                
+                //TODO: comment there line to hide the background image
+                if let imageUrl = response.hits?[0].largeImageURL {
+                    let url = imageUrl
+                    self.imvBackground.downloadedFrom(url: URL(string: url)!)
+                }
+                
+                self.showLoading(isShow: false)
+            case .failure(let error):
+                print(error)
+                self.showLoading(isShow: false)
+            }
+        })
     }
     
     @IBAction func swapTemperature(_ sender: UIButton) {
