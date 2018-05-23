@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, WeatherDelegate{
     
     @IBOutlet weak var lblWeatherMain: UILabel!
     @IBOutlet weak var lblWeatherDescription: UILabel!
@@ -31,11 +31,17 @@ class WeatherViewController: UIViewController {
     let activityIndicator = UIActivityIndicatorView()
     
     var weatherData = [Weather]()
+    var delegate: WeatherDelegate?
     
     var temp: Double = 0
     
     // Passing Data
     var city: String?
+    
+    func setCity(city: String) {
+        print(city)
+        self.city = city
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +56,7 @@ class WeatherViewController: UIViewController {
         setupViews()
         setupDatetime()
 
+        
         // Do any additional setup after loading the view.
         fetchWeather(city: city!)
     }

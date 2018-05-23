@@ -9,10 +9,18 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+protocol WeatherDelegate {
+    func setCity(city: String)
+}
+
+class ViewController: UIViewController{
 
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var txtCity: UITextField!
+    
+    var delegate: WeatherDelegate?
+    
+    var city: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +40,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func openWeatherPage(city: String) {
-        let weatherUI = UIStoryboard(name: StoryboardName.weather, bundle: nil)
-        let weatherVC = weatherUI.instantiateViewController(withIdentifier: StoryboardID.weatherStoryboard) as! WeatherViewController
-        weatherVC.city = city
-        self.present(weatherVC, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueWeather" {
+            if let destinationVC = segue.destination as? WeatherViewController {
+                destinationVC.city = txtCity.text!
+            }
+        }
+        
     }
+    
+//    func openWeatherPage(city: String) {
+//        let weatherUI = UIStoryboard(name: StoryboardName.weather, bundle: nil)
+//        let weatherVC = weatherUI.instantiateViewController(withIdentifier: StoryboardID.weatherStoryboard) as! WeatherViewController
+//        weatherVC.city = city
+//        self.present(weatherVC, animated: true, completion: nil)
+//
+//    }
     
     @IBAction func btnSearchClick(_ sender: Any) {
         if !(txtCity.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
-            openWeatherPage(city: txtCity.text!)
+            
+            performSegue(withIdentifier: "segueWeather", sender: nil)
         }
         let alert = UIAlertController(title: Strings.dialogError, message: Strings.formError, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: Strings.STR_OK, style: UIAlertActionStyle.default, handler: nil))

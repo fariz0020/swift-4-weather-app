@@ -32,6 +32,7 @@
                                 </state>
                                 <connections>
                                     <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ujj-Cd-uSn"/>
+                                    <segue destination="nOH-dF-rHB" kind="show" identifier="segueWeather" id="0dP-jf-RvK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input your city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7M-3g-9Ft">
@@ -64,6 +65,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--WeatherStoryboard-->
+        <scene sceneID="iO7-Cz-xxw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Weather" referencedIdentifier="WeatherStoryboard" id="nOH-dF-rHB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vk6-Vr-wtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="-74"/>
         </scene>
     </scenes>
 </document>
